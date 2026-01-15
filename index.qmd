@@ -1,0 +1,21 @@
+---
+title: "Pollen Deposition Curves"
+format:
+  html: default
+  docx:
+    reference-doc: assets/template.docx
+bibliography: assets/references.bib
+csl: assets/ajb.csl
+---
+
+# Introduction
+
+# Questions
+
+- Greenhouse vs field
+- Manipulated vs natural
+- 
+
+ @evanhoe2002floral 
+
+ How to understand this: Flowers exposed to pollinators exhibited morphological male-phase longevities comparable to those of greenhouse flowers with half or all pollen removed (Fig. 2A) and female phase longevities similar to those of greenhouse flowers with at least one stigmatic lobe fully coated with pollen (Fig. 2B). For both surveys, the percentage of pollen removed from male phase flowers increased linearly during the first 4 h of morphological male phase (Fig. 1A). Within these 4 h, flowers had achieved at least 96% male function saturation—nearly complete pollen removal. Maximum levels of pollen accumulation on stigmas were reached within 5–6 h of onset of female phase, indicating a maximum length of functional female phase (Fig. 1B). Less pollen was observed on the stigmatic lobes collected on day 2 and 3, at which time corollas had wilted (although stigmas were turgid) and rain had fallen.
