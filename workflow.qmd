@@ -1,0 +1,95 @@
+---
+title: "Workflow Documentation"
+format: html
+---
+
+# Overview
+
+This project automates the extraction, verification, and reporting of pollen deposition data from scientific literature. The workflow relies on a modular system where data "payloads" (containing metadata, traits, and graph data) are stored as individual Python scripts and processed by a central Quarto report.
+
+# Project Structure
+
+*   **`report.qmd`**: The main notebook that aggregates all data and generates the visualization report.
+*   **`process_data.py`**: A shared Python module containing the logic to parse payloads and generate plots/tables.
+*   **`data/payloads/`**: Directory containing individual Python files for each article (e.g., `evanhoe2002.py`).
+*   **`render.sh`**: Helper script to render Quarto documents using the correct virtual environment.
+*   **`doc/`**: Output directory for rendered HTML files (`index.html`, `report.html`, `workflow.html`).
+
+# Step-by-Step Workflow
+
+## 1. Extract Data (The "Payload")
+
+Use your AI assistant (Gemini Gem) to generate the `flat_data_table`. The Gem should be configured to output a **flat list of dictionaries**, where each row represents a single data point combined with global metadata.
+
+**Structure of a single row in `flat_data_table`:**
+*   **Global Traits**: `bibtex_nick`, `Species`, `Family`, `total_longevity`, `ovule_number`, `methods_notes`.
+*   **Source Info**: `source_figure`, `image_path` (lowercase path: `Data_images/nick/file.jpg`).
+*   **Data Point**:
+    *   `series_name` (e.g., "Survey 1")
+    *   `time_point_h` (X value)
+    *   `variable` (Y variable name)
+    *   `value` (Y value)
+    *   `variation_value` (Error bar size)
+    *   `variation_type` (SE/SD/CI)
+
+## 2. Create a Payload Loop
+
+1.  Create a new Python file in `data/payloads/` named after the article (e.g., `smith2024.py`).
+2.  Paste the `flat_data_table` list into this file.
+
+**Example `data/payloads/smith2024.py`:**
+```python
+flat_data_table = [
+    {
+        "bibtex_nick": "Smith2024",
+        "Species": "Example species",
+        "time_point_h": 1,
+        "value": 10.5,
+        ...
+    },
+    ...
+]
+```
+
+## 3. Update the Report
+
+Open `report.qmd` and add a new section for the article. Use the updated template:
+
+```python
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import smith2024
+process_payload(smith2024.flat_data_table)
+```
+
+````markdown
+## Smith et al. 2024
+
+```python
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import smith2024
+process_payload(smith2024.experiment_payload)
+```
+
+**User Notes:**
+*   Add any specific observations about this paper here.
+````
+
+## 4. Render the Report
+
+Run the `render.sh` script from the terminal to generate the HTML output.
+
+```bash
+./render.sh
+```
+
+This will run Quarto using the project's virtual environment and update files in the `doc/` directory. Open `doc/report.html` to view the results.

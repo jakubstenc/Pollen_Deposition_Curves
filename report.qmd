@@ -1,0 +1,73 @@
+---
+title: "Automated Data Extraction Report"
+format: html
+---
+
+```{python}
+#| echo: false
+#| include: false
+import sys
+import os
+
+# Add current directory to path so we can import local modules
+sys.path.append(os.getcwd())
+
+from process_data import process_payload
+```
+
+# Processed Articles
+
+## @evanhoe2002floral
+**Source:** "Floral longevity in Campanula americana..."
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import evanhoe2002
+process_payload(evanhoe2002.flat_data_table)
+```
+
+
+
+## @griffin2000
+**Source:** "Experimental analysis of protogyny in Aquilegia canadensis..."
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import griffin2000
+process_payload(griffin2000.flat_data_table)
+```
+
+
+
+**User Notes:**
+*   Add your observations here...
+*   Data points in Figure 1A seem to align well with the text description.
+
+<hr>
+
+<!-- 
+TEMPLATE FOR NEW ARTICLE:
+## [New Article Name]
+```python
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+# from data.payloads import [new_article_file]
+# process_payload([new_article_file].flat_data_table)
+```
+**User Notes:**
+...
+-->
