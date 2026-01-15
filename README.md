@@ -8,7 +8,7 @@ This project manages the data lifecycle for the "Pollen Deposition Curves" study
 
 The project includes a self-contained documentation website generated from the data.
 
-👉 **[View the Project Website & Report](doc/index.html)**
+👉 **[View the Project Website & Report](docs/index.html)**
 *(Open this link in your browser to explore the extracted data, visualizations, and workflow details.)*
 
 ## 🔄 Workflow
@@ -22,7 +22,7 @@ The system follows a modular "Payload" architecture:
     *   Generates interactive HTML tables.
     *   Reconstructs the original graphs side-by-side with source images for Quality Control (QC).
     *   **Exports CSVs** automatically to `data/csv/`.
-4.  **Reporting**: Quarto renders the website (`doc/`), aggregating all payloads into a unified report.
+4.  **Reporting**: Quarto renders the website (`docs/`), aggregating all payloads into a unified report.
 
 ## 🛠️ Installation & Usage
 
@@ -44,7 +44,7 @@ This script ensures Quarto uses the project's local virtual environment.
 
 *   `data/payloads/`: **Source of Truth**. contains Python files with extracted data for each article.
 *   `data/csv/`: **Exported Data**. Clean CSV files generated automatically during rendering.
-*   `doc/`: **Website Output**. The rendered HTML files (`index.html`, `report.html`, etc.).
+*   `docs/`: **Website Output**. The rendered HTML files (`index.html`, `report.html`, etc.).
 *   `Data_images/`: Original source images organized by bibliography nickname.
 *   `process_data.py`: Core logic for data validation, plotting, and export.
 *   `report.qmd`: Quarto notebook that aggregates all payloads.

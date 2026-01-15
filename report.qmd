@@ -12,6 +12,9 @@ import os
 # Add current directory to path so we can import local modules
 sys.path.append(os.getcwd())
 
+import process_data
+import importlib
+importlib.reload(process_data)
 from process_data import process_payload
 ```
 
@@ -49,11 +52,76 @@ process_payload(griffin2000.flat_data_table)
 
 
 
-**User Notes:**
-*   Add your observations here...
-*   Data points in Figure 1A seem to align well with the text description.
 
-<hr>
+## @zhang2011
+**Source:** "The dynamics of pollen removal and deposition, and its effects on sexual phases in a protandrous plant: Glechoma longituba (Lamiaceae)"
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import zhang2011
+process_payload(zhang2011.flat_data_table)
+```
+
+**Methodological Note: Data Conversion for Glechoma longituba**
+
+Source: Zhang et al. (2011), Nordic Journal of Botany.
+
+Data Transformation: The original time-series data for Glechoma longituba (Figure 1) presented pollen dynamics as relative percentages. To ensure consistency with the absolute values used elsewhere in this dataset, these percentages were converted to absolute pollen grain counts using baseline biological data explicitly stated in the article text:
+
+    Pollen Removal: Cumulative removal percentages were converted to absolute grains based on the reported mean total pollen production per flower (Mean = 24,166 grains).
+
+    Pollen Deposition: Deposition percentages were converted to absolute grains based on the reported mean maximum stigmatic pollen load observed at the end of the female phase (Mean = 389 grains).
+
+Assumption: For pollen deposition, it is assumed that the "100%" scale on the figure's secondary y-axis represents the physiological saturation point of the stigma (approx. 389 grains) rather than the total pollen production of the flower, as the latter would imply biologically unrealistic deposition rates for this species.
+
+
+
+## @blair2007
+**Source:** "The association between floral longevity and pollen removal..."
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import blair2007
+process_payload(blair2007.flat_data_table)
+```
+
+## @jin2015
+**Source:** "Relationship between floral longevity and pollen removal..."
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import jin2015
+process_payload(jin2015.flat_data_table)
+```
+
+## @xiong2013
+**Source:** "Pollinator scarcity drives the shift to delayed selfing..."
+
+```{python}
+#| echo: false
+#| output: asis
+#| warning: false
+#| fig-width: 14
+#| fig-height: 6
+
+from data.payloads import xiong2013
+process_payload(xiong2013.flat_data_table)
+```
 
 <!-- 
 TEMPLATE FOR NEW ARTICLE:

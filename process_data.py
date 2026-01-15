@@ -60,7 +60,7 @@ def process_payload(flat_data_table):
             print(f"\n#### Source: {fig_name} ({path})")
 
             # Check if image exists
-            if os.path.exists(path):
+            if path and os.path.exists(path):
                 try:
                     import matplotlib.image as mpimg
                     img = mpimg.imread(path)
